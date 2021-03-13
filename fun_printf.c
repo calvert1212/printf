@@ -4,12 +4,14 @@
  *
  * Return: Always 0
  */
-void func_c(a)
+
+/* Prints one character*/
+void func_c(int a)
 {
 	_putchar(a);
 
 }
-
+/* Prints string*/
 void func_s(char *c)
 {
 	int i = 0;
@@ -20,14 +22,17 @@ void func_s(char *c)
 		i++;
 	}
 }
+/* Prints % symbol*/
 void func_pct()
 {
 	_putchar('%');
 }
-void func_default(int a)
+/* No specifier*/
+void func_default()
 {
 }
 
+/* Loop to check for specifiers. If not specifier, putchar character */
 int _printf(const char *format, ...)
 {
 	va_list v_list;
@@ -38,6 +43,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
+			/* Switch statement to pick function for specifier*/
 			switch (format[i + 1])
 			{
 				case 'c':
@@ -50,7 +56,7 @@ int _printf(const char *format, ...)
 					func_pct();
 					break;
 				default:
-					func_default(va_arg(v_list, int));
+					func_pct();
 					break;
 			}
 		i += 1;
@@ -63,7 +69,7 @@ int _printf(const char *format, ...)
 }
 int main ()
 {
-	_printf("%ca%%bcd%sefg",'O',"THIS IS A STRING");
+	_printf("%ca%%b%zcd%sefg",'O',"THIS IS A STRING");
 
 	return (0);
 }
