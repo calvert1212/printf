@@ -1,6 +1,5 @@
 #include "holberton.h"
 #include <unistd.h>
-static int count;
 /**
  *  - Entry point
  *
@@ -62,51 +61,51 @@ int func_bin(unsigned int a, char *p)
 	return (count);
 }
 
-//Print unsigned int
+/*Print unsigned int */
 int func_uint(unsigned int a, char *p)
 {
 	count = 0;
-	// Remove the last digit and recur
+	/* Remove the last digit and recur*/
 	if (a/10)
 		func_uint(a/10, p);
-	// Print the last digit
+	/* Print the last digit */
 	p[count++] = (a%10 + '0');
 	return (count);
 }
 
-//Prints unsigned int to octal
+/* Prints unsigned int to octal */
 int func_oct(unsigned int a, char *p)
 {
 	count = 0;
-	// Remove the last digit and recur
+	/* Remove the last digit and recur */
 	if (a/8)
 		func_oct(a/8, p);
-	// Print the last digit
+	/* Print the last digit */
 	p[count++] = (a%8 + '0');
 	return (count);
 }
-//Prints unsigned int to abcdef hex
+/* Prints unsigned int to abcdef hex */
 int func_hex(unsigned int a, char *p)
 {
 	count = 0;
-	// Remove the last digit and recur
+	/* Remove the last digit and recur */
 	if (a/16)
 		func_hex(a/16, p);
-	// Print the last digit
+	/* Print the last digit */
 	if (a%16 <=9)
 	p[count++] = (a%16 + '0');
 	else
 		p[count++] = (a%16 - 10 + 'a');
 	return (count);
 }
-//Prints unsigned int to ABCDEF hex
+/* Prints unsigned int to ABCDEF hex */
 int func_HEX(unsigned int a, char *p)
 {
 	count = 0;
-	// Remove the last digit and recur
+	/* Remove the last digit and recur */
 	if (a/16)
 		func_HEX(a/16, p);
-	// Print the last digit
+	/* Print the last digit */
 	if (a%16 <=9)
 		p[count++] = (a%16 + '0');
 	else
@@ -126,7 +125,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-		// Switch statement to pick function for specifier
+		/* Switch statement to pick function for specifier */
 			switch (format[i + 1])
 			{
 				case 'c':
@@ -159,6 +158,10 @@ int _printf(const char *format, ...)
 			case 'X':
 				j = j + func_HEX(va_arg(v_list, unsigned int), array + j);
 				break;
+			case 'S':
+				j = j + func_S(va_arg(v_list, char *), array + j);
+				break;
+
 				/*default:
 					func_pct();
 					break;
@@ -178,6 +181,6 @@ int _printf(const char *format, ...)
 }
 int main ()
 {
-	_printf("abcd%c %s %i %o %x %X", 'H', "Holberton", -98, 98, 15, 15);
+	_printf("abcd%c %s %i %o %x %X %S", 'H', "Holberton", -98, 98, 15, 15, "Holber\n\v\r\t\f\\tonABCDE");
 	return (0);
 }
