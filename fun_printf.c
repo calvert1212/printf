@@ -50,71 +50,83 @@ int func_int(int a, char *p)
 }
 	/* Remove the last digit and recur */
 	/* Print the last digit */
-/* Print a base 10 in binary
-void func_bin(unsigned int a)
+/*Print a base 10 in binary*/
+int func_bin(unsigned int a, char *p)
 {
-	 Remove the last digit and recur 
-	if (a/2)
-		func_bin(a/2);
-	 Print the last digit 
-	_putchar(a%2 + '0');
-}
- Print unsigned int 
-void func_uint(unsigned int a)
-{
-	// Remove the last digit and recur
-	if (a/10)
-		func_uint(a/10);
-	// Print the last digit
-	_putchar(a%10 + '0');
-}
- Prints unsigned int to octal
-void func_oct(unsigned int a)
-{
-	// Remove the last digit and recur
-	if (a/8)
-		func_oct(a/8);
-	// Print the last digit
-	_putchar(a%8 + '0');
-}
- Prints unsigned int to abcdef hex
-void func_hex(unsigned int a)
-{
-	// Remove the last digit and recur
-	if (a/16)
-		func_hex(a/16);
-	// Print the last digit
-	if (a%16 <=9)
-	_putchar(a%16 + '0');
-	else
-		_putchar(a%16 - 10 + 'a');
-}
- Prints unsigned int to ABCDEF hex
-void func_HEX(unsigned int a)
-{
-	// Remove the last digit and recur
-	if (a/16)
-		func_HEX(a/16);
-	// Print the last digit
-	if (a%16 <=9)
-		_putchar(a%16 + '0');
-	else
-		_putchar(a%16 - 10 + 'A');
+	count = 0;
+	/*Remove the last digit and recur*/
+		 if (a/2)
+			 func_bin(a/2, p);
+		 /*Print the last digit*/ 
+	p[count++] = (a%2 + '0');
+	return (count);
 }
 
-Loop to check for specifiers. If not specifier, putchar character */
+//Print unsigned int
+int func_uint(unsigned int a, char *p)
+{
+	count = 0;
+	// Remove the last digit and recur
+	if (a/10)
+		func_uint(a/10, p);
+	// Print the last digit
+	p[count++] = (a%10 + '0');
+	return (count);
+}
+
+//Prints unsigned int to octal
+int func_oct(unsigned int a, char *p)
+{
+	count = 0;
+	// Remove the last digit and recur
+	if (a/8)
+		func_oct(a/8, p);
+	// Print the last digit
+	p[count++] = (a%8 + '0');
+	return (count);
+}
+//Prints unsigned int to abcdef hex
+int func_hex(unsigned int a, char *p)
+{
+	count = 0;
+	// Remove the last digit and recur
+	if (a/16)
+		func_hex(a/16, p);
+	// Print the last digit
+	if (a%16 <=9)
+	p[count++] = (a%16 + '0');
+	else
+		p[count++] = (a%16 - 10 + 'a');
+	return (count);
+}
+//Prints unsigned int to ABCDEF hex
+int func_HEX(unsigned int a, char *p)
+{
+	count = 0;
+	// Remove the last digit and recur
+	if (a/16)
+		func_HEX(a/16, p);
+	// Print the last digit
+	if (a%16 <=9)
+		p[count++] = (a%16 + '0');
+	else
+		p[count++] = (a%16 - 10 + 'A');
+	return (count);
+}
+
+/*Loop to check for specifiers. If not specifier, putchar character */
 int _printf(const char *format, ...)
 {
 	va_list v_list;
 	int i = 0, j = 0;
 	char array[1024];
 
-	va_start(v_list, format);	
+	va_start(v_list, format);
 	while (format && format[i])
 	{
 		if (format[i] == '%')
 		{
-			/* Switch statement to pick function for specifier*/
+		// Switch statement to pick function for specifier
 			switch (format[i + 1])
 			{
 				case 'c':
@@ -123,32 +135,34 @@ int _printf(const char *format, ...)
 				case 's':
 					j = j + func_s(va_arg(v_list, char *), array + j);
 					break;
-/*				case '%':
-					func_pct();
-					break;*/
+				case '%':
+					array[j] = ('%');
+					j++;
+					break;
 			case 'd':
 			case 'i':
 				count = 0;
                     		j = j + func_int(va_arg(v_list, int), array + j);
 				break;
-/*			case 'b':
-				func_bin(va_arg(v_list, unsigned int));
+			case 'b':
+				j = j + func_bin(va_arg(v_list, unsigned int), array + j);
 				break;
 			case 'u':
-				func_uint(va_arg(v_list, int));
+				j = j + func_uint(va_arg(v_list, int), array + j);
 				break;
 			case 'o':
-				func_oct(va_arg(v_list, unsigned int));
+				j = j + func_oct(va_arg(v_list, unsigned int), array + j);
 				break;
 			case 'x':
-				func_hex(va_arg(v_list, unsigned int));
+				j = j + func_hex(va_arg(v_list, unsigned int), array + j);
 				break;
 			case 'X':
-				func_HEX(va_arg(v_list, unsigned int));
+				j = j + func_HEX(va_arg(v_list, unsigned int), array + j);
 				break;
-				default:
+				/*default:
 					func_pct();
-					break;*/
+					break;
+				*/
 			}
 		i += 1;
 		}
@@ -164,6 +178,6 @@ int _printf(const char *format, ...)
 }
 int main ()
 {
-	_printf("abcd%c %s %i %d", 'H', "Holberton", 98, -98);
+	_printf("abcd%c %s %i %o %x %X", 'H', "Holberton", -98, 98, 15, 15);
 	return (0);
 }
