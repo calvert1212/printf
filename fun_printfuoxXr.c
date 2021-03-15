@@ -1,5 +1,4 @@
 static int count;
-
 /**
  * func_uint - Print unsigned int
  * @a: The input number

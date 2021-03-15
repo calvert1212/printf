@@ -1,5 +1,35 @@
 #include "holberton.h"
 #include <unistd.h>
+static int count;
+int func_bin(unsigned int a, char *p);
+int func_uint(unsigned int a, char *p);
+int func_oct(unsigned int a, char *p);
+int func_hex(unsigned int a, char *p);
+int func_HEX(unsigned int a, char *p);
+int func_r(char *c, char *p);
+
+/**
+ * func_int - Prints an integer
+ * @a: The number
+ * @p: Pointer to derefrence decimals
+ * Return: Length of number
+ */
+int func_int(int a, char *p)
+{
+	if (a < 0)
+	{
+		p[count++] = '-';
+		a = -a;
+	}
+/* Remove the last digit and recur */
+	if (a / 10)
+		func_int(a / 10, p);
+/* Print the last digit */
+	p[count++] = (a % 10 + '0');
+	return (count);
+}
+
+
 /**
  * _printf - Primary function: Writes characters and looks for specifiers etc.
  * @format: Arguments given as strings
@@ -18,18 +48,19 @@ int _printf(const char *format, ...)
 		{
 			switch (format[i + 1])
 			{
-				case 'c':
-					func_c(va_arg(v_list, int), array + j++);
-					break;
-				case 's':
-					j = j + func_s(va_arg(v_list, char *), array + j);
-					break;
-				case '%':
-					array[j] = ('%');
-					j++;
-					break;
+			case 'c':
+				func_c(va_arg(v_list, int), array + j++);
+				break;
+			case 's':
+				j = j + func_s(va_arg(v_list, char *), array + j);
+				break;
+			case '%':
+				array[j] = ('%');
+				j++;
+				break;
 			case 'd':
 			case 'i':
+				count = 0;
 				j = j + func_int(va_arg(v_list, int), array + j);
 				break;
 			case 'b':
