@@ -112,6 +112,27 @@ int func_HEX(unsigned int a, char *p)
 		p[count++] = (a%16 - 10 + 'A');
 	return (count);
 }
+/*prints reversed string*/
+int func_r(char *c, char *p)
+{
+	int i = 0;
+	int l = 0;
+	int x = 0;
+	
+	while (c[i])
+	{
+		i++;
+	l++;
+	}
+	l = l -1;
+	while (l >= 0)
+	{
+		p[x] = c[l];
+		l--;
+		x++;
+	}
+	return (i);
+}
 
 /*Loop to check for specifiers. If not specifier, putchar character */
 int _printf(const char *format, ...)
@@ -161,6 +182,8 @@ int _printf(const char *format, ...)
 			case 'S':
 				j = j + func_S(va_arg(v_list, char *), array + j);
 				break;
+			case 'r':
+				j = j + func_r(va_arg(v_list, char *), array + j);
 
 				/*default:
 					func_pct();
@@ -181,6 +204,6 @@ int _printf(const char *format, ...)
 }
 int main ()
 {
-	_printf("abcd%c %s %i %o %x %X %S", 'H', "Holberton", -98, 98, 15, 15, "Holber\n\v\r\t\f\\tonABCDE");
+	_printf("abcd%c %r %i %o %x %X %S", 'H', "Holberton", -98, 98, 15, 15, "Holber\n\v\r\t\f\\tonABCDE");
 	return (0);
 }
