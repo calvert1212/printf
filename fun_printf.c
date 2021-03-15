@@ -30,7 +30,6 @@ int _printf(const char *format, ...)
 					break;
 			case 'd':
 			case 'i':
-				count = 0;
 				j = j + func_int(va_arg(v_list, int), array + j);
 				break;
 			case 'b':
@@ -64,10 +63,5 @@ int _printf(const char *format, ...)
 		i++;
 	}
 	write(1, &array, j);
-	return (0);
-}
-int main ()
-{
-	_printf("abcd");
 	return (0);
 }
