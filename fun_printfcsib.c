@@ -33,11 +33,12 @@ int func_s(char *c, char *p)
  */
 int func_int(int a, char *p)
 {
-	count = 0;
 	if (a < 0)
 	{
-		p[count++] = '-';
+		count = 0;
+		p[count] = '-';
 		a = -a;
+		count++;
 	}
 /* Remove the last digit and recur */
 	if (a / 10)

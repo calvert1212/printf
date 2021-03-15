@@ -53,7 +53,7 @@ int _printf(const char *format, ...)
 			case 'r':
 				j = j + func_r(va_arg(v_list, char *), array + j);
 			}
-		i += 1;
+			i += 1;
 		}
 		else
 		{
@@ -63,5 +63,5 @@ int _printf(const char *format, ...)
 		i++;
 	}
 	write(1, &array, j);
-	return (0);
+	return (j);
 }
