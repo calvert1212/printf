@@ -1,28 +1,34 @@
 #include "holberton.h"
 #include <unistd.h>
-/**
- *  - Entry point
- *
- * Return: Always 0
- */
 
-/* Prints one character*/
-void func_c(int a, char * p)
+/**
+ * func_c - Prints one character
+ * @a: input character
+ * @p: pointer
+ */
+void func_c(int a, char *p)
 {
-    *p = a;
+	*p = a;
 }
-/* Prints string*/
+
+/**
+ * func_s - Prints string
+ * @c: Input string
+ * @p: Pointer
+ * Return: Length of string
+ */
 int func_s(char *c, char *p)
 {
-    int i = 0;
-    
-    while (c[i])
-    {
-        p[i] = c[i];
-        i++;
-    }
-    return (i);
+	int i = 0;
+
+	while (c[i])
+	{
+		p[i] = c[i];
+		i++;
+	}
+	return (i);
 }
+
 /* Prints % symbol
 void func_pct()
 {
@@ -32,36 +38,51 @@ void func_pct()
 void func_default()
 {
 }
- Prints an integer*/
+*/
+
+/**
+ * func_int - Prints an integer
+ * @a: The number
+ * @p: Pointer to derefrence decimals
+ * Return: Length of number
+ */
 int func_int(int a, char *p)
-{    
-    if (a < 0) {
-        p[count++] = '-';
-        a = -a;
-    }
-    /* Remove the last digit and recur */
-    if (a/10)
-        func_int(a/10, p);
-    /* Print the last digit */
-    p[count++] = (a%10 + '0');
-    
-    return (count);
+{
+	if (a < 0) {
+		p[count++] = '-';
+		a = -a;
+	}
+/* Remove the last digit and recur */
+	if (a/10)
+		func_int(a/10, p);
+/* Print the last digit */
+	p[count++] = (a%10 + '0');
+	return (count);
 }
-	/* Remove the last digit and recur */
-	/* Print the last digit */
-/*Print a base 10 in binary*/
+
+/**
+ * func_bin - Print a base 10 in binary
+ * @a: The input number
+ * @p: The pointer
+ * Return: Length of number
+*/
 int func_bin(unsigned int a, char *p)
 {
 	count = 0;
-	/*Remove the last digit and recur*/
-		 if (a/2)
-			 func_bin(a/2, p);
-		 /*Print the last digit*/ 
+	/* Remove the last digit and recur */
+	if (a/2)
+		func_bin(a/2, p);
+		/* Print the last digit */
 	p[count++] = (a%2 + '0');
 	return (count);
 }
 
-/*Print unsigned int */
+/**
+ * func_uint - Print unsigned int
+ * @a: The input number
+ * @p: The pointer
+ * Return: Length of the number
+ */
 int func_uint(unsigned int a, char *p)
 {
 	count = 0;
@@ -73,7 +94,12 @@ int func_uint(unsigned int a, char *p)
 	return (count);
 }
 
-/* Prints unsigned int to octal */
+/**
+ * func_oct - Prints unsigned int to octal
+ * @a: The input number
+ * @p: The pointer
+ * Return: Length of the number
+ */
 int func_oct(unsigned int a, char *p)
 {
 	count = 0;
@@ -84,7 +110,13 @@ int func_oct(unsigned int a, char *p)
 	p[count++] = (a%8 + '0');
 	return (count);
 }
-/* Prints unsigned int to abcdef hex */
+
+/**
+ * func_hex - Prints unsigned int to abcdef hex
+ * @a: The input number
+ * @p: The pointer
+ * Return: Length of the number
+ */
 int func_hex(unsigned int a, char *p)
 {
 	count = 0;
@@ -98,7 +130,13 @@ int func_hex(unsigned int a, char *p)
 		p[count++] = (a%16 - 10 + 'a');
 	return (count);
 }
-/* Prints unsigned int to ABCDEF hex */
+
+/**
+ * func_HEX Prints unsigned int to ABCDEF hex
+ * @a: The input number
+ * @p: The pointer
+ * Return: The length of the number
+ */
 int func_HEX(unsigned int a, char *p)
 {
 	count = 0;
@@ -112,13 +150,17 @@ int func_HEX(unsigned int a, char *p)
 		p[count++] = (a%16 - 10 + 'A');
 	return (count);
 }
-/*prints reversed string*/
+
+/**
+ * func_p - Prints input string in reverse
+ * @c: Input string
+ * @p: The pointer
+ * Return: Length of the reverse string
+ */
 int func_r(char *c, char *p)
 {
-	int i = 0;
-	int l = 0;
-	int x = 0;
-	
+	int i, l, x = 0;
+
 	while (c[i])
 	{
 		i++;
@@ -134,7 +176,11 @@ int func_r(char *c, char *p)
 	return (i);
 }
 
-/*Loop to check for specifiers. If not specifier, putchar character */
+/**
+ * _printf - Primary function: Writes characters and looks for specifiers etc.
+ * @format: Arguments given as strings
+ * Return: Always 0
+ */
 int _printf(const char *format, ...)
 {
 	va_list v_list;
@@ -204,6 +250,6 @@ int _printf(const char *format, ...)
 }
 int main ()
 {
-	_printf("abcd%c %r %i %o %x %X %S", 'H', "Holberton", -98, 98, 15, 15, "Holber\n\v\r\t\f\\tonABCDE");
+	_printf("abcd");
 	return (0);
 }
