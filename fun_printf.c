@@ -10,10 +10,10 @@ int func_uint(unsigned int a, char *p)
 {
 	count = 0;
 	/* Remove the last digit and recur*/
-	if (a/10)
-		func_uint(a/10, p);
+	if (a / 10)
+		func_uint(a / 10, p);
 	/* Print the last digit */
-	p[count++] = (a%10 + '0');
+	p[count++] = (a % 10 + '0');
 	return (count);
 }
 
@@ -27,10 +27,10 @@ int func_oct(unsigned int a, char *p)
 {
 	count = 0;
 	/* Remove the last digit and recur */
-	if (a/8)
-		func_oct(a/8, p);
+	if (a / 8)
+		func_oct(a / 8, p);
 	/* Print the last digit */
-	p[count++] = (a%8 + '0');
+	p[count++] = (a % 8 + '0');
 	return (count);
 }
 
@@ -44,13 +44,13 @@ int func_hex(unsigned int a, char *p)
 {
 	count = 0;
 	/* Remove the last digit and recur */
-	if (a/16)
-		func_hex(a/16, p);
+	if (a / 16)
+		func_hex(a / 16, p);
 	/* Print the last digit */
-	if (a%16 <=9)
-	p[count++] = (a%16 + '0');
+	if (a % 16 <= 9)
+	p[count++] = (a % 16 + '0');
 	else
-		p[count++] = (a%16 - 10 + 'a');
+		p[count++] = (a % 16 - 10 + 'a');
 	return (count);
 }
 
@@ -64,13 +64,13 @@ int func_HEX(unsigned int a, char *p)
 {
 	count = 0;
 	/* Remove the last digit and recur */
-	if (a/16)
-		func_HEX(a/16, p);
+	if (a / 16)
+		func_HEX(a / 16, p);
 	/* Print the last digit */
-	if (a%16 <=9)
-		p[count++] = (a%16 + '0');
+	if (a % 16 <= 9)
+		p[count++] = (a % 16 + '0');
 	else
-		p[count++] = (a%16 - 10 + 'A');
+		p[count++] = (a % 16 - 10 + 'A');
 	return (count);
 }
 
@@ -89,7 +89,7 @@ int func_r(char *c, char *p)
 		i++;
 	l++;
 	}
-	l = l -1;
+	l = l - 1;
 	while (l >= 0)
 	{
 		p[x] = c[l];
@@ -115,7 +115,6 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-		/* Switch statement to pick function for specifier */
 			switch (format[i + 1])
 			{
 				case 'c':
@@ -131,7 +130,7 @@ int _printf(const char *format, ...)
 			case 'd':
 			case 'i':
 				count = 0;
-                    		j = j + func_int(va_arg(v_list, int), array + j);
+				j = j + func_int(va_arg(v_list, int), array + j);
 				break;
 			case 'b':
 				j = j + func_bin(va_arg(v_list, unsigned int), array + j);
@@ -168,7 +167,7 @@ int _printf(const char *format, ...)
 		}
 		i++;
 	}
-	write(1, &array,j);
+	write(1, &array, j);
 	return (0);
 }
 int main ()

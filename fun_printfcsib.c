@@ -33,15 +33,16 @@ int func_s(char *c, char *p)
  */
 int func_int(int a, char *p)
 {
-	if (a < 0) {
+	if (a < 0)
+	{
 		p[count++] = '-';
 		a = -a;
 	}
 /* Remove the last digit and recur */
-	if (a/10)
-		func_int(a/10, p);
+	if (a / 10)
+		func_int(a / 10, p);
 /* Print the last digit */
-	p[count++] = (a%10 + '0');
+	p[count++] = (a % 10 + '0');
 	return (count);
 }
 /**
@@ -53,11 +54,10 @@ int func_int(int a, char *p)
 int func_bin(unsigned int a, char *p)
 {
 	count = 0;
-	/* Remove the last digit and recur */
-	if (a/2)
-		func_bin(a/2, p);
-		/* Print the last digit */
-	p[count++] = (a%2 + '0');
+	/* Remove the last digit and recurse */
+	if (a / 2)
+		func_bin(a / 2, p);
+	/* Print the last digit */
+	p[count++] = (a % 2 + '0');
 	return (count);
 }
-
