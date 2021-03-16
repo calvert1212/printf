@@ -9,8 +9,19 @@
  */
 int main(void)
 {
-_printf("aabb% c");
-_printf("\n%");                                                                                   
+int len;
+
+len = _printf("%\n");
+printf("%d\n", len);
+len = printf("%\n");
+/*printf("%d\n", len);
+
+len = printf("%\n");
+printf("%d\n", len);
+len = printf("%");
+printf("%d\n", len);*/
+
+                                                                                   
 /*_printf("%%d");                                                                                   
 _printf("%");                                                                                    
 _printf("%%%d", 10);                                                                           

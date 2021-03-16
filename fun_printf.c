@@ -112,6 +112,8 @@ int _printf(const char *format, ...)
 			case 'R':
 				j = j + func_R(va_arg(v_list, char *), array + j);
 				break;
+			case '\n':
+				return (2);
 			default:
 				return (-1);
 			}
