@@ -13,6 +13,6 @@ int func_oct(unsigned int a, char *p);
 int func_hex(unsigned int a, char *p);
 int func_HEX(unsigned int a, char *p);
 int func_r(char *c, char *p);
-
+int func_R(char *c, char *p);
 
 #endif

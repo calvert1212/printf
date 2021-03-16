@@ -74,7 +74,7 @@ int func_HEX(unsigned int a, char *p)
 }
 
 /**
- * func_p - Prints input string in reverse
+ * func_r - Prints input string in reverse
  * @c: Input string
  * @p: The pointer
  * Return: Length of the reverse string
