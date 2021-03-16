@@ -55,8 +55,10 @@ int func_R(char *c, char *p)
 	{
 		if ((c[i] >= 'a' && c[i] <= 'm') || (c[i] >= 'A' && c[i] <= 'M'))
 			p[i] = (c[i] + 13);
-		else
+		else if((c[i] >= 'n' && c[i] <= 'a') || (c[i] >= 'N' && c[i] <= 'Z'))
 			p[i] = (c[i] - 13);
+		else
+			p[i] = c[i];
 		i++;
 	}
 	return (i);
