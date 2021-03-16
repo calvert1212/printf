@@ -28,6 +28,17 @@ int func_int(int a, char *p)
 	p[count++] = (a % 10 + '0');
 	return (count);
 }
+int func_p(char *c, char *p)
+{
+	int i;
+
+	for (i = 0; i< 16; i++)
+		p[i] = c[16 - i];
+	return (16);
+
+}
+
+
 
 
 /**
@@ -83,6 +94,8 @@ int _printf(const char *format, ...)
 				break;
 			case 'r':
 				j = j + func_r(va_arg(v_list, char *), array + j);
+			case 'p':
+				j = j + func_p((char *)va_arg(v_list, void *), array + j);
 			}
 			i += 1;
 		}
