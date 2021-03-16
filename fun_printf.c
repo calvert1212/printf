@@ -99,6 +99,8 @@ int _printf(const char *format, ...)
 				break;
 			case 'R':
 				j = j + func_R(va_arg(v_list, char *), array + j);
+			default:
+				return (-1);
 			}
 			i += 1;
 		}
