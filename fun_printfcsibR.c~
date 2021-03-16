@@ -41,3 +41,17 @@ int func_bin(unsigned int a, char *p)
 	p[count++] = (a % 2 + '0');
 	return (count);
 }
+int func_R(char *c, char *p)
+{
+	int i = 0;
+
+	while (c[i])
+	{
+		if ((c[i] >= 'a' && c[i] <= 'm') || (c[i] >= 'A' && c[i] <= 'M'))
+			p[i] = (c[i] + 13);
+		else
+			p[i] = (c[i] - 13);
+		i++;
+	}
+	return (i);
+}

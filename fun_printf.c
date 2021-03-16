@@ -94,8 +94,14 @@ int _printf(const char *format, ...)
 				break;
 			case 'r':
 				j = j + func_r(va_arg(v_list, char *), array + j);
+<<<<<<< HEAD
 			case 'p':
 				j = j + func_p((char *)va_arg(v_list, void *), array + j);
+=======
+				break;
+			case 'R':
+				j = j + func_R(va_arg(v_list, char *), array + j);
+>>>>>>> 74a3feddb855355131a9c1beecb8540f9d7d79ee
 			}
 			i += 1;
 		}
