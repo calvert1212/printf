@@ -16,17 +16,27 @@ int func_r(char *c, char *p);
  */
 int func_int(int a, char *p)
 {
+	unsigned int c;
 	if (a < 0)
 	{
 		p[count++] = '-';
-		a = -a;
-	}
+		c = -a;
+	
 /* Remove the last digit and recur */
-	if (a / 10)
-		func_int(a / 10, p);
+		if (c / 10)
+			func_int((int)(c / 10), p);
 /* Print the last digit */
-	p[count++] = (a % 10 + '0');
+		p[count++] = (c % 10 + '0');
+		return (count);
+	}
+	else
+	{
+		if (a / 10)
+                func_int(a / 10, p);
+/* Print the last digit */
+        p[count++] = (a % 10 + '0');
 	return (count);
+	}
 }
 /*
 int func_p(char **c, char *p)
