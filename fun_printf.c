@@ -94,5 +94,6 @@ int _printf(const char *format, ...)
 		i++;
 	}
 	write(1, &array, j);
+	va_end(v_list);
 	return (j);
 }
