@@ -1,6 +1,6 @@
-.TH _printf - Linux man page
+.TH _PRINTF(1) - Linux man page
 
-.SH Name
+.SH NAME
 .B _printf
 
 .SH SYNOPSIS
