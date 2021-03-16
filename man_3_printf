@@ -44,16 +44,3 @@ Non printable characters (0 < ASCII value < 32 or >= 127) are printed this way: 
 
 A '%' is written. No argument is converted. The complete conversion specification is '%%'.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
