@@ -105,11 +105,21 @@ int _printf(const char *format, ...)
 				break;
 			case 'r':
 				j = j + func_r(va_arg(v_list, char *), array + j);
+				break;
 /*			case 'p':
 				j = j + func_p((char *)va_arg(v_list, void *), array + j);
 				break; */
 			case 'R':
 				j = j + func_R(va_arg(v_list, char *), array + j);
+				break;
+			case ' ':
+				array[j] = ('%');
+                                j++;
+				array[j] = 32;
+				j++;
+				break;
+			case '\0':				
+				break;
 			default:
 				return (-1);
 			}
