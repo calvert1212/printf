@@ -44,3 +44,10 @@ Non printable characters (0 < ASCII value < 32 or >= 127) are printed this way: 
 
 A '%' is written. No argument is converted. The complete conversion specification is '%%'.
 
+.SH r
+
+If no l modifier is present: Takes an input string (char array), removes terminating null byte, reverses the string, adds a terminating null byte, and writes result to standard output
+
+.SH R
+
+If no l modifier is present: Takes an input string (char array), iterates through string, rotating all letters by 13 places while maintaining their case (an ancient form of encryption), does not modify other types of characters, and writes the result to standard output.
