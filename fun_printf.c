@@ -117,7 +117,7 @@ int _printf(const char *format, ...)
 			default:
 				array[j] = ('%');
                                 j++;
-				array[j] = format[i + 1]
+				array[j] = format[i + 1];
 				j++;
 			}
 			i += 1;
