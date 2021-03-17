@@ -115,7 +115,10 @@ int _printf(const char *format, ...)
 			case '\n':
 				return (2);
 			default:
-				return (-1);
+				array[j] = ('%');
+                                j++;
+				array[j] = format[i + 1]
+				j++;
 			}
 			i += 1;
 		}
